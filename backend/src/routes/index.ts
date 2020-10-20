@@ -1,8 +1,12 @@
 import { Router } from 'express';
+import appointmentsRouter from './appointments.routes';
 
 const routes = Router();
 
-routes.get('/', (request, response) =>
+// Tudo que vem depois de appointments será repassado para appointmentsRouter
+routes.use('/appointments', appointmentsRouter);
+
+/* routes.get('/', (request, response) =>
   response.json({ message: 'Hello World' }),
 );
 
@@ -14,6 +18,6 @@ routes.post('/users', (request, response) => {
     email,
   };
   return response.json(user);
-});
+}); */
 
 export default routes;
