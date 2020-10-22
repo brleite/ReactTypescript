@@ -7,6 +7,8 @@ class UserVM {
 
   email: string;
 
+  avatar: string;
+
   created_at: Date;
 
   updated_at: Date;
@@ -15,6 +17,7 @@ class UserVM {
     this.id = user.id;
     this.name = user.name;
     this.email = user.email;
+    this.avatar = user.avatar;
     this.created_at = user.created_at;
     this.updated_at = user.updated_at;
   }
