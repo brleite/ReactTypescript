@@ -16,12 +16,7 @@ usersRouter.post('/', async (request, response) => {
       password,
     });
 
-    const userVM = new UserVM();
-    userVM.id = user.id;
-    userVM.name = user.name;
-    userVM.email = user.email;
-    userVM.created_at = user.created_at;
-    userVM.updated_at = user.updated_at;
+    const userVM = new UserVM(user);
 
     // delete user.password;
 
