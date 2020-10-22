@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CreateUserService from '../services/CreateUserService';
+import UserVM from '../viewmodels/UserVM';
 
 const usersRouter = Router();
 
@@ -15,7 +16,16 @@ usersRouter.post('/', async (request, response) => {
       password,
     });
 
-    return response.json(user);
+    const userVM = new UserVM();
+    userVM.id = user.id;
+    userVM.name = user.name;
+    userVM.email = user.email;
+    userVM.created_at = user.created_at;
+    userVM.updated_at = user.updated_at;
+
+    // delete user.password;
+
+    return response.json(userVM);
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
