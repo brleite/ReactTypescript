@@ -7,7 +7,9 @@ import Repository from '../pages/Repository';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/repository" component={Repository} />
+    {/* O + no final do parâmetro indica que o valor do parâmetro será tudo após a /. Inclusive, se houver uma /
+    no meio, esta estará dentro do valor do parâmetro */}
+    <Route path="/repositories/:repository+" component={Repository} />
   </Switch>
 );
 
