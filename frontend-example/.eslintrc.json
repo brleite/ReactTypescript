@@ -1,7 +1,7 @@
 {
   "env": {
-    "browser": true,
-    "es2021": true
+    "browser": true /* ,
+    "es2021": true */
   },
   "extends": [
     "plugin:react/recommended",
@@ -25,6 +25,13 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
+    "camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
     "no-use-before-define": [0],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/extensions": [
