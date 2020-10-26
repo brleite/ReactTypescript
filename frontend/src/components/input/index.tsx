@@ -1,4 +1,10 @@
-import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
+import React, {
+  InputHTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from 'react';
 import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 
@@ -13,9 +19,37 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 // componente que pode ser utilizado no formato de tag
 const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   // Usado para acessar o componente diretamente. É possível acessar o elemento na DOM.
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
 
   const { fieldName, defaultValue, error, registerField } = useField(name);
+
+  /**
+   * Dessa forma, a function é recriada a cada renderização do componente. O ideal é utilizar o useCallback
+   */
+  /* function handleInputBlur() {
+    setIsFocused(false);
+  } */
+
+  /**
+   * A função só é recriada se algum item do array do segundo parâmetro for alterado
+   */
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+
+    /* if (inputRef.current?.value) {
+      setIsFilled(true);
+    } else {
+      setIsFilled(false);
+    } */
+
+    setIsFilled(!!inputRef.current?.value);
+  }, []);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -26,9 +60,15 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <Container>
+    <Container isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
-      <input defaultValue={defaultValue} ref={inputRef} {...rest} />
+      <input
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        defaultValue={defaultValue}
+        ref={inputRef}
+        {...rest}
+      />
     </Container>
   );
 };
