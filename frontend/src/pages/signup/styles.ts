@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackgroundImg from '../../assets/sign-in-background.png';
+import signUpBackground from '../../assets/sign-up-background.png';
 
 export const Container = styled.div`
   height: 100vh; // 100% da parte visível do usuário (viewport height). O height 100% não funciona porque é preciso fazer o mesmo para body e outros elementos
@@ -46,7 +46,7 @@ export const Content = styled.div`
 
   > a {
     // Somente o a que estiver diretamente dentro do Content. O de dentro do form, por exemplo, não é afetado.
-    color: #ff9000;
+    color: #f4ede8;
     display: flex;
     align-items: center;
     margin-top: 24px;
@@ -58,13 +58,13 @@ export const Content = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      color: ${shade(0.2, '#f4ede8')};
     }
   }
 `;
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${signInBackgroundImg}) no-repeat center;
+  background: url(${signUpBackground}) no-repeat center;
   background-size: cover;
 `;
