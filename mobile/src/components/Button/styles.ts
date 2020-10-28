@@ -12,6 +12,8 @@ export const Container = styled(RectButton)`
   // display: flex; */
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const ButtonText = styled.Text`
