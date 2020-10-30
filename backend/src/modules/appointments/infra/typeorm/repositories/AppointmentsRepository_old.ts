@@ -1,7 +1,7 @@
 import { isEqual } from 'date-fns';
-import Appointment from '../infra/typeorm/entities/Appointment';
+import Appointment from '../entities/Appointment';
 
-interface CreateAppointmentDTO {
+interface ICreateAppointmentDTO {
   provider: string;
   date: Date;
 }
@@ -25,7 +25,7 @@ class AppointmentsRepository {
     return findAppointment || null;
   }
 
-  public create({ /* provider, */ date }: CreateAppointmentDTO): Appointment {
+  public create({ /* provider, */ date }: ICreateAppointmentDTO): Appointment {
     /*
     Alterado para que o eslint pare de dar erro. Será utilizada a versão com typeorm
     */
