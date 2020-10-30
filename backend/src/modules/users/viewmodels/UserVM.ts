@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../infra/typeorm/entities/User';
 
 class UserVM {
   id: string;

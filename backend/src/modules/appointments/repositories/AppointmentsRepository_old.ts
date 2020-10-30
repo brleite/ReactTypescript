@@ -1,5 +1,5 @@
 import { isEqual } from 'date-fns';
-import Appointment from '../models/Appointment';
+import Appointment from '../infra/typeorm/entities/Appointment';
 
 interface CreateAppointmentDTO {
   provider: string;
@@ -25,14 +25,14 @@ class AppointmentsRepository {
     return findAppointment || null;
   }
 
-  public create({ provider, date }: CreateAppointmentDTO): Appointment {
+  public create({ /* provider, */ date }: CreateAppointmentDTO): Appointment {
     /*
     Alterado para que o eslint pare de dar erro. Será utilizada a versão com typeorm
     */
 
     const appointment = new Appointment(/* { provider, date } */);
     appointment.date = date;
-    appointment.provider = provider;
+    /* appointment.provider = provider; */
 
     this.appointments.push(appointment);
 

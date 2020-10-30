@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { parseISO } from 'date-fns';
-import AppointmentsRepository from '../repositories/AppointmentsRepository_old';
-import CreateAppointmentService from '../services/CreateAppointmentService_old';
+import AppointmentsRepository from '@modules/appointments/repositories/AppointmentsRepository_old';
+import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService_old';
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();

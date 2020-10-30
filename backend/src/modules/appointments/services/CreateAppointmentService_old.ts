@@ -1,5 +1,5 @@
 import { startOfHour } from 'date-fns';
-import Appointment from '../models/Appointment';
+import Appointment from '../infra/typeorm/entities/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository_old';
 
 interface RequestDTO {
