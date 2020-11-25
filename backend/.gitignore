@@ -3,3 +3,5 @@ yarn.lock
 temp
 tmp/*
 !tmp/.gitkeep
+.env
+ormconfig.json
