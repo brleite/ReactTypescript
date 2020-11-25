@@ -1,5 +1,6 @@
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
-import UserVM from '@modules/users/viewmodels/UserVM';
+// import UserVM from '@modules/users/viewmodels/UserVM';
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -17,8 +18,11 @@ export default class SessionsController {
       password,
     });
 
+    /*
     const userVM = new UserVM(user);
 
     return response.json({ user: userVM, token });
+    */
+    return response.json({ user: classToClass(user), token });
   }
 }

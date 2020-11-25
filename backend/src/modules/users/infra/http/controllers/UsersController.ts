@@ -1,5 +1,6 @@
 import CreateUserService from '@modules/users/services/CreateUserService';
-import UserVM from '@modules/users/viewmodels/UserVM';
+// import UserVM from '@modules/users/viewmodels/UserVM';
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -16,10 +17,11 @@ export default class UsersController {
       password,
     });
 
-    const userVM = new UserVM(user);
+    /* const userVM = new UserVM(user);
 
     // delete user.password;
 
-    return response.json(userVM);
+    return response.json(userVM); */
+    return response.json(classToClass(user));
   }
 }

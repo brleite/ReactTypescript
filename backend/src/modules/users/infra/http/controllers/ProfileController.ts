@@ -1,8 +1,9 @@
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import ShowProfileService from '@modules/users/services/ShowProfileService';
-import UserVM from '@modules/users/viewmodels/UserVM';
+// import UserVM from '@modules/users/viewmodels/UserVM';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 export default class ProfileController {
   public async show(request: Request, response: Response): Promise<Response> {
@@ -12,11 +13,15 @@ export default class ProfileController {
 
     const user = await showProfile.execute({ user_id });
 
+    /*
     const userVM = new UserVM(user);
 
     // delete user.password;
 
     return response.json(userVM);
+    */
+
+    return response.json(classToClass(user));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -33,10 +38,13 @@ export default class ProfileController {
       password,
     });
 
+    /*
     const userVM = new UserVM(user);
 
     // delete user.password;
 
     return response.json(userVM);
+    */
+    return response.json(classToClass(user));
   }
 }
